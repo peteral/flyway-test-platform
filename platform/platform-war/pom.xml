@@ -10,7 +10,7 @@
 	<packaging>war</packaging>
 
 	<build>
-		<finalName>platform.war</finalName>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.wildfly.plugins</groupId>
@@ -22,14 +22,6 @@
 					<id>wildfly</id>
 					<protocol>http-remoting</protocol>
 				</configuration>
-				<executions>
-					<execution>
-						<!-- <phase>package</phase> -->
-						<!-- <goals> -->
-						<!-- <goal>deploy</goal> -->
-						<!-- </goals> -->
-					</execution>
-				</executions>
 			</plugin>
 			
 		</plugins>
