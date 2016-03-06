@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>peteral.test.build</groupId>
 	<artifactId>platform</artifactId>
-	<version>0.0.4</version>
+	<version>0.0.5-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<properties>
@@ -61,7 +61,7 @@
 
 	<scm>
 		<developerConnection>scm:git:ssh://git@localhost:7999/buil/platform.git</developerConnection>
-	  <tag>releases/0.0.4</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 	<modules>
