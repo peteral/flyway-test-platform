@@ -1,5 +1,10 @@
 /target/
+<<<<<<< HEAD
 /.settings/
 /.classpath
+=======
+/.classpath
+/.settings/
+>>>>>>> refs/heads/feature/feature-1
 /.project
 /.tern-project

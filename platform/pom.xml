@@ -21,20 +21,40 @@
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
-			<id>Nexus local</id>
-			<url>http://localhost:8081/nexus/content/groups/public</url>
+			<id>nexus-releases</id>
+			<url>http://localhost:8081/nexus/content/repositories/releases</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</snapshots>
+			<id>nexus-snapshots</id>
+			<url>http://localhost:8081/nexus/content/repositories/snapshots</url>
 			<layout>default</layout>
 		</repository>
 	</repositories>
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<version>2.5.3</version>
-			</plugin>
-		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>2.6</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.5.3</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 
 	<scm>
@@ -48,5 +68,14 @@
 			<name>Local nexus</name>
 			<url>http://localhost:8081/nexus/content/repositories/releases</url>
 		</repository>
+		<snapshotRepository>
+			<uniqueVersion>false</uniqueVersion>
+			<id>nexus</id>
+			<name>Local nexus</name>
+			<url>http://localhost:8081/nexus/content/repositories/snapshots</url>
+		</snapshotRepository>
 	</distributionManagement>
+	<modules>
+		<module>platform-war</module>
+	</modules>
 </project>
