@@ -8,4 +8,31 @@
 	</parent>
 	<artifactId>platform-war</artifactId>
 	<packaging>war</packaging>
+
+	<build>
+		<finalName>platform.war</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>${version.plugin.wildfly}</version>
+				<configuration>
+					<hostname>${wildfly-hostname}</hostname>
+					<port>${wildfly-port}</port>
+					<username>${wildfly-username}</username>
+					<password>${wildfly-password}</password>
+					<protocol>http-remoting</protocol>
+				</configuration>
+				<executions>
+					<execution>
+						<!-- <phase>package</phase> -->
+						<!-- <goals> -->
+						<!-- <goal>deploy</goal> -->
+						<!-- </goals> -->
+					</execution>
+				</executions>
+			</plugin>
+			
+		</plugins>
+	</build>
 </project>
