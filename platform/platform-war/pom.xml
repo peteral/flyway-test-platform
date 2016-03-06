@@ -23,7 +23,19 @@
 					<protocol>http-remoting</protocol>
 				</configuration>
 			</plugin>
-			
+
 		</plugins>
 	</build>
+	<dependencies>
+		<dependency>
+			<groupId>peteral.test.build</groupId>
+			<artifactId>platform-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${version.javaee-api}</version>
+		</dependency>
+	</dependencies>
 </project>
