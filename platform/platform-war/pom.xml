@@ -19,8 +19,7 @@
 				<configuration>
 					<hostname>${wildfly-hostname}</hostname>
 					<port>${wildfly-port}</port>
-					<username>${wildfly-username}</username>
-					<password>${wildfly-password}</password>
+					<id>wildfly</id>
 					<protocol>http-remoting</protocol>
 				</configuration>
 				<executions>
