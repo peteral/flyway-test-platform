@@ -3,7 +3,7 @@
   <parent>
     <groupId>peteral.test.build</groupId>
     <artifactId>platform</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.5-SNAPSHOT</version>
   </parent>
   <artifactId>platform-api</artifactId>
 </project>
