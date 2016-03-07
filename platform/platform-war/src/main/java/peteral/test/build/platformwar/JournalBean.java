@@ -13,7 +13,7 @@ public class JournalBean implements Journal {
 
 	@Override
 	public void log(String message) {
-		Logger.getLogger("platform").info(message);
+		Logger.getLogger("platform").info("Message from client: " + message);
 	}
 
 }
