@@ -1,0 +1,5 @@
+<persistence>
+    <persistence-unit name="PU">
+        <jta-data-source>java:jboss/datasources/test</jta-data-source>
+    </persistence-unit>
+</persistence>
