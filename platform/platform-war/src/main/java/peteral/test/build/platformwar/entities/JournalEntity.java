@@ -6,15 +6,23 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="JOURNAL")
 public class JournalEntity {
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
-	private long id;
+	@SequenceGenerator(sequenceName="JOURNAL_SEQUENCE", name="JournalEntitySeq", allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="JournalEntitySeq")
+	private Long id;
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	private Timestamp ts;
 	private String message;
 	
