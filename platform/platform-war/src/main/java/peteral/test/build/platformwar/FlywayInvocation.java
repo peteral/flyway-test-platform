@@ -1,31 +1,17 @@
-package peteral.test.build.platformwar.entities;
+package peteral.test.build.platformwar;
 
 import java.util.logging.Logger;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import javax.ejb.EJBException;
-import javax.ejb.Singleton;
-import javax.ejb.Startup;
-import javax.ejb.TransactionManagement;
-import javax.ejb.TransactionManagementType;
 import javax.sql.DataSource;
 
 import org.flywaydb.core.Flyway;
 import org.flywaydb.core.api.MigrationInfo;
 
-@Startup
-@Singleton
-@TransactionManagement(TransactionManagementType.BEAN)
-public class Migration {
-	private final Logger log = Logger.getLogger(Migration.class.getName());
+public class FlywayInvocation {
+	private final Logger log = Logger.getLogger(FlywayInvocation.class.getName());
 
-	// TODO dynamic data source name
-	@Resource(lookup = "java:/jdbc/oracle")
-	private DataSource dataSource;
-
-	@PostConstruct
-	public void migrate() {
+	public void migrate(DataSource dataSource, String tableName) {
 		if (dataSource == null) {
 			log.severe("no datasource found to execute the db migrations!");
 			throw new EJBException("no datasource found to execute the db migrations!");
@@ -36,7 +22,7 @@ public class Migration {
 		flyway.setDataSource(dataSource);
 		flyway.setLocations("/db/migration/standard",
 				"/db/migration/" + System.getProperty("test.databasetype", "oracle"));
-		flyway.setTable("PLATFORM_METADATA");
+		flyway.setTable(tableName);
 
 		for (MigrationInfo i : flyway.info().all()) {
 			log.info("Database validation: " + i.getState() + ": " + i.getVersion() + " : " + i.getDescription()
