@@ -2,6 +2,7 @@ package peteral.test.build.platformwar.entities;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="JOURNAL")
+@Cacheable(false)
 public class JournalEntity {
 	@Id
 	@SequenceGenerator(sequenceName="JOURNAL_SEQUENCE", name="JournalEntitySeq", allocationSize=1)

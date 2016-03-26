@@ -23,6 +23,8 @@ public class JournalBean implements Journal {
 		entry.setMessage(message);
 		
 		em.persist(entry);
+		
+		em.flush();
 	}
 
 }

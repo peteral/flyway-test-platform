@@ -19,27 +19,28 @@ import org.flywaydb.core.api.MigrationInfo;
 @TransactionManagement(TransactionManagementType.BEAN)
 public class Migration {
 	private final Logger log = Logger.getLogger(Migration.class.getName());
-	
-	@Resource(lookup = "java:jboss/datasources/test")
+
+	// TODO dynamic data source name
+	@Resource(lookup = "java:/jdbc/oracle")
 	private DataSource dataSource;
-	
+
 	@PostConstruct
 	public void migrate() {
 		if (dataSource == null) {
 			log.severe("no datasource found to execute the db migrations!");
-			throw new EJBException(
-					"no datasource found to execute the db migrations!");
+			throw new EJBException("no datasource found to execute the db migrations!");
 		}
- 
+
 		Flyway flyway = new Flyway();
 		flyway.setBaselineOnMigrate(true);
 		flyway.setDataSource(dataSource);
-		flyway.setLocations("/db/migration/" + System.getProperty("test.databasetype", "mssql"));
+		flyway.setLocations("/db/migration/standard",
+				"/db/migration/" + System.getProperty("test.databasetype", "oracle"));
 		flyway.setTable("PLATFORM_METADATA");
-		
+
 		for (MigrationInfo i : flyway.info().all()) {
-			log.info("Database validation: " + i.getState() + ": " + i.getVersion() + " : "
-					+ i.getDescription() + " from file: " + i.getScript());
+			log.info("Database validation: " + i.getState() + ": " + i.getVersion() + " : " + i.getDescription()
+					+ " from file: " + i.getScript());
 		}
 		flyway.migrate();
 	}
