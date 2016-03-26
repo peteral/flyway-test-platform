@@ -10,7 +10,7 @@ import peteral.test.build.platformapi.Journal;
 
 @Singleton
 @Startup
-@DependsOn("Migration")
+@DependsOn("MigrationBean")
 public class StartupBean {
 	@EJB(lookup=Journal.LOOKUP)
 	private Journal journal;

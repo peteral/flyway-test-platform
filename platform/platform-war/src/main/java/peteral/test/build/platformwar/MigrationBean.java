@@ -1,4 +1,4 @@
-package peteral.test.build.platformwar.entities;
+package peteral.test.build.platformwar;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -7,8 +7,6 @@ import javax.ejb.Startup;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.sql.DataSource;
-
-import peteral.test.build.platformwar.FlywayInvocation;
 
 @Startup
 @Singleton
