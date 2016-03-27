@@ -1,13 +1,15 @@
 package peteral.test.build.platformwar.entities;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.persistence.Cacheable;
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -22,8 +24,9 @@ public class JournalEntity {
 	
 	private Timestamp ts;
 	private String message;
-	@Column(name="param1")
-	private String parameter;
+	
+	@OneToMany(mappedBy="parameterId", cascade=CascadeType.ALL)
+	private List<JournalParameterEntity> parameter;
 	
 	public Long getId() {
 		return id;
@@ -44,10 +47,10 @@ public class JournalEntity {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public String getParameter() {
+	public List<JournalParameterEntity> getParameter() {
 		return parameter;
 	}
-	public void setParameter(String parameter) {
+	public void setParameter(List<JournalParameterEntity> parameter) {
 		this.parameter = parameter;
 	}
 }

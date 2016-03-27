@@ -1,0 +1,1 @@
+alter table journal drop column param1;
