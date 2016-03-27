@@ -6,8 +6,5 @@
 	<persistence-unit name="PU">
 		<jta-data-source>java:/jdbc/oracle</jta-data-source>
 		<class>peteral.test.build.platformwar.entities.JournalEntity</class>
-		<properties>
-			<property name="eclipselink.logging.level" value="FINE"/>
-		</properties>
 	</persistence-unit>
 </persistence>

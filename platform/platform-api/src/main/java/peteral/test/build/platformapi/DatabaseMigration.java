@@ -24,7 +24,7 @@ public class DatabaseMigration {
 		flyway.setTable(tableName);
 
 		for (MigrationInfo i : flyway.info().all()) {
-			log.info("Database validation: " + i.getState() + ": " + i.getVersion() + " : " + i.getDescription()
+			log.info("Database validation (" + tableName + "): " + i.getState() + ": " + i.getVersion() + " : " + i.getDescription()
 					+ " from file: " + i.getScript());
 		}
 		flyway.migrate();
