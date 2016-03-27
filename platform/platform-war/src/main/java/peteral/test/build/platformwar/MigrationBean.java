@@ -8,6 +8,8 @@ import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.sql.DataSource;
 
+import peteral.test.build.platformapi.DatabaseMigration;
+
 @Startup
 @Singleton
 @TransactionManagement(TransactionManagementType.BEAN)
@@ -17,6 +19,6 @@ public class MigrationBean {
 
 	@PostConstruct
 	public void migrate() {
-		new FlywayInvocation().migrate(dataSource, "PLATFORM_METADATA");
+		new DatabaseMigration().migrate(dataSource, "PLATFORM_METADATA");
 	}
 }

@@ -1,20 +1,19 @@
-package peteral.test.build.platformwar;
+package peteral.test.build.platformapi;
 
 import java.util.logging.Logger;
 
-import javax.ejb.EJBException;
 import javax.sql.DataSource;
 
 import org.flywaydb.core.Flyway;
 import org.flywaydb.core.api.MigrationInfo;
 
-public class FlywayInvocation {
-	private final Logger log = Logger.getLogger(FlywayInvocation.class.getName());
+public class DatabaseMigration {
+	private final Logger log = Logger.getLogger(DatabaseMigration.class.getName());
 
 	public void migrate(DataSource dataSource, String tableName) {
 		if (dataSource == null) {
 			log.severe("no datasource found to execute the db migrations!");
-			throw new EJBException("no datasource found to execute the db migrations!");
+			throw new DatabaseMigrationException("no datasource found to execute the db migrations!");
 		}
 
 		Flyway flyway = new Flyway();
