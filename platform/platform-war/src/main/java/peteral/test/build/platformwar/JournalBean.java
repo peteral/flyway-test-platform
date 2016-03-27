@@ -17,10 +17,13 @@ public class JournalBean implements Journal {
 	private EntityManager em;
 	
 	@Override
-	public void log(String message) {
+	public void log(String message, String... parameter) {
 		JournalEntity entry = new JournalEntity();
 		entry.setTs(new Timestamp(System.currentTimeMillis()));
 		entry.setMessage(message);
+		
+		if (parameter.length > 0)
+			entry.setParameter(parameter[0]);
 		
 		em.persist(entry);
 		

@@ -3,6 +3,7 @@ package peteral.test.build.platformwar.entities;
 import java.sql.Timestamp;
 
 import javax.persistence.Cacheable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,14 +20,17 @@ public class JournalEntity {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="JournalEntitySeq")
 	private Long id;
 	
+	private Timestamp ts;
+	private String message;
+	@Column(name="param1")
+	private String parameter;
+	
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	private Timestamp ts;
-	private String message;
 	
 	public Timestamp getTs() {
 		return ts;
@@ -39,5 +43,11 @@ public class JournalEntity {
 	}
 	public void setMessage(String message) {
 		this.message = message;
+	}
+	public String getParameter() {
+		return parameter;
+	}
+	public void setParameter(String parameter) {
+		this.parameter = parameter;
 	}
 }
