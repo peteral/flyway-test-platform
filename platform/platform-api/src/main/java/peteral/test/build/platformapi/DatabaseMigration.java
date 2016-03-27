@@ -27,6 +27,7 @@ public class DatabaseMigration {
 			log.info("Database validation (" + tableName + "): " + i.getState() + ": " + i.getVersion() + " : " + i.getDescription()
 					+ " from file: " + i.getScript());
 		}
+		flyway.repair();
 		flyway.migrate();
 	}
 }
